@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import unittest
 from fifth_row import FifthRow, Matchup, TokenError
 
