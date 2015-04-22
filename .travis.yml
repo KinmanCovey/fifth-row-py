@@ -4,5 +4,4 @@ python:
   - "2.7"
 
 script:
-  - chmod +x fifth-row-test.py
-  - fifth-row-test.py
+  - python fifth-row-test.py
