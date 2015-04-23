@@ -23,7 +23,7 @@ class TokenError(Exception):
 
 class FifthRow:
 
-    def __init__(self, sandbox=False, token=None):
+    def __init__(self, sandbox=True, token=None):
         self.sandbox = sandbox
 
         if self.sandbox is False:
@@ -96,6 +96,15 @@ class Matchup:
         self.home_code = str(dict_['home']['code'])
         self.away = str(dict_['away']['team'])
         self.away_code = str(dict_['away']['code'])
+        self.begin_date = None
+        self.begin_time = None
+        self.begin_iso = None
+        self.winner = None
+        self.winner_code = None
+        self.point_difference = None
+        self.home_score = None
+        self.away_score = None
+        self.time_remaining = None
 
         if self.status is 'upcoming':
             self.begin_date = str(dict_['begins']['date'])
