@@ -1,3 +1,4 @@
+#!usr/env/bin python
 '''
 Python module for The 5th Row Sports Data API
 Made by Kinman Covey
@@ -92,9 +93,9 @@ class Matchup:
         self._data = dict_
         self.status = str(dict_['status'])
         self.sport = str(dict_['sport'])
-        self.home = str(dict_['home']['team'])
+        self.home_team = str(dict_['home']['team'])
         self.home_code = str(dict_['home']['code'])
-        self.away = str(dict_['away']['team'])
+        self.away_team = str(dict_['away']['team'])
         self.away_code = str(dict_['away']['code'])
         self.begin_date = None
         self.begin_time = None
