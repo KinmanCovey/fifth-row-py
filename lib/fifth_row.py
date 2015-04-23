@@ -97,9 +97,9 @@ class Matchup:
         self.home_code = str(dict_['home']['code'])
         self.away_team = str(dict_['away']['team'])
         self.away_code = str(dict_['away']['code'])
-        self.begin_date = None
-        self.begin_time = None
-        self.begin_iso = None
+        self.begins_date = None
+        self.begins_time = None
+        self.begins_iso = None
         self.winner = None
         self.winner_code = None
         self.point_difference = None
