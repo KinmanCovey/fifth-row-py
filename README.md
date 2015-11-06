@@ -1,4 +1,4 @@
-# fifth-row-py
+# fifth-row-py [![Build Status](https://travis-ci.org/KinmanCovey/fifth-row-py.svg?branch=master)](https://travis-ci.org/KinmanCovey/fifth-row-py)
 A Python module made to interface with [The 5th Row](http://www.the5throw.com) sports data API
 
 # Project Status
