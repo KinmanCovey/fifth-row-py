@@ -4,23 +4,22 @@ from fifthrow.fifthrow import *
 
 class FifthRowTest(unittest.TestCase):
 
-    def test_url(self):
+    def test_sandboxed_url(self):
         '''
-        FifthRow object's url should be the sandboxed url
+        FifthRow object's url should be the sandboxed url.
         '''
         self.assertEqual(FifthRow(sandbox=True).url, 'sandbox.the5throw.com')
 
-    def test_get_return(self):
+    def test_sandboxed_token(self):
         '''
-        FifthRow.get() should return a list of Matchup objects
+        A sandboxed FifthRow should have a token of 'sandbox'
+        regardless of token parameter.
         '''
-        data = FifthRow(sandbox=True).get('nba')
-        self.assertIs(type(data), list)
-        self.assertEqual(data[0].__class__, Matchup)
+        self.assertEqual(FifthRow(sandbox=True, token=5555).token, 'sandbox')
 
-    def test_token_error(self):
+    def test_none_token(self):
         '''
-        TokenError should be raised if token != an integer
+        TokenError should be raised if token != an integer.
         '''
         self.assertRaises(TokenError, FifthRow, sandbox=False, token=None)
 
