@@ -46,20 +46,14 @@ class FifthRow:
         #check parameters and start building the api request
         url_request = ''
 
-        if type(sport) is str and sport is not None:
-            url_request += '/' + sport
-        elif type(sport) is not str and sport is not None:
-            raise TypeError('sport parameter must be a string')
+        if sport is not None:
+            url_request += '/' + str(sport)
 
-        if type(team) is str and team is not None:
-            url_request += '/' + team
-        elif type(team) is not str and team is not None:
-            raise TypeError('team parameter must be a string')
+        if team is not None:
+            url_request += '/' + str(team)
 
-        if type(status) is str and status is not None:
-            url_request += '/' + status
-        elif type(status) is not str and status is not None:
-            raise TypeError('status parameter must be a string')
+        if status is not None:
+            url_request += '/' + str(status)
 
         # make the HTTP request to the API with the request url
         with closing(HTTPConnection(self.url)) as conn:
@@ -75,16 +69,30 @@ class FifthRow:
             
             matchups = []
 
-            try:
-                data['status']
-                matchup = Matchup(data)
+            if isinstance(data, dict):
+                if 'message' in data:
+                    matchup = NoMatchup(data)
+                else:
+                    matchup = Matchup(data)
+                
                 matchups.append(matchup)
-            except TypeError:
+
+            else:
                 for entry in data:
                     matchup = Matchup(entry)
                     matchups.append(matchup)
                         
         return matchups
+
+class NoMatchup:
+
+    def __init__(self, dict_):
+
+        self._data = dict_
+        self.message = dict_['message']
+
+    def __getitem__(self, key):
+        return self._date[key]
 
 class Matchup:
 
