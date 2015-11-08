@@ -13,15 +13,17 @@ The project is still a work in progress and will be (hopefully) gaining new feat
 To begin making requests to the API, create an object of the `FifthRow` class like so
 ```python
 from fifth_row import FifthRow
-f = FifthRow(sandbox=True)
+f = FifthRow()
 ```
-The class defaults to the real API, but in this example we are using the sandboxed version.
+The class defaults to the sandboxed API, so passing no parameters to the constructor is fine for experimenting.
 
 Now that `f` has been instantiated, we can start making requests using `f.get()`
 ```python
 matches = f.get(sport='nba', team='ny', status='upcoming')
 ```
-Now `matches` is a list of `Matchup` objects. These objects hold all the data for every individual match that was returned by our request.
+`f.get()` returns a generator filled with `Matchup` objects. These objects hold all the data for every individual match that was returned by our request.
+
+In the event that the API can't find any matchups that meet your request, the method will return a generator containing one `NoMatchup` object. The `NoMatchup` object has one attribute, `message`, that contains the response returned from the API.
 
 The API response objects are similar to this (taken straight from their docs)
 ```javascript
@@ -33,18 +35,11 @@ The API response objects are similar to this (taken straight from their docs)
   status: "upcoming"
 }
 ```
-The `Matchup` objects extract this data and store it in properly named attributes. For instance, the matches home team value can be found in the `Matchup` object at its attribute `home_team`. For the away team the value is stored in, you guessed it, the `away_team` attribute. You can check the class and its attributes yourself, but I tried to make it so you could make an educated guess on the attribute name and get it correct the first time.
+The `Matchup` objects extract this data and store it in properly named attributes. For instance, the matches home team value can be found in the `Matchup` object at its attribute `home_team`. For the away team the value is stored in, you guessed it, the `away_team` attribute.
 
-You can access a `Matchup` object's data by the attribute or by treating it like a dictionary
+Since the `get` method returns a generator, the easiest way to extract each matches information is by iterating through them
 ```python
-print matches[0].status
-# is the same as
-print matches[0]['status']
-```
-
-Since the get method returns a list, the easiest way to extract each matches information is by iterating through them
-```python
-for match in matches:
+for match in FifthRow.get('nba'):
   print match.status
   print match.home
   print match.away

@@ -40,9 +40,16 @@ class FifthRow:
         else:
             raise TypeError('sandbox parameter must be a boolean')
 
-    # all purpose get method for the API calls.
-    # returns a dict of matches
     def get(self, sport=None, team=None, status=None):
+        '''All purpose retrieval method for the API.
+        Parameters:
+            sport: str; abbreviated sport code (e.g. nba, mlb, nfl, nhl)
+            team: str; abbreviated team code (e.g. ny, chi, tor)
+            status: str; status of the matchup (e.g. upcoming, active, final)
+        Returns:
+            generator object containing Matchup objects,
+            or one NoMatchup object (API couldn't find matchups)
+        '''
         #check parameters and start building the api request
         url_request = ''
 
@@ -82,7 +89,8 @@ class FifthRow:
                     matchup = Matchup(entry)
                     matchups.append(matchup)
                         
-        return matchups
+        for m in matchups:
+            yield m
 
 class NoMatchup:
 

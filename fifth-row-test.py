@@ -23,11 +23,5 @@ class FifthRowTest(unittest.TestCase):
         '''
         self.assertRaises(TokenError, FifthRow, sandbox=False, token=None)
 
-    def test_get_matchup(self):
-        '''
-        FifthRow.get() should return a list of matchups
-        '''
-        pass
-
 if __name__ == '__main__':
     unittest.main()
