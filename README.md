@@ -2,11 +2,9 @@
 A Python module made to interface with [The 5th Row](http://www.the5throw.com) sports data API
 
 # Project Status
-I started this project for two reasons:
-  1. To support a great company with a great API and great service. They're doing God's work over there.
-  2. To practice writing Pythonic programs (feel free to let me know how I did with that)
+I started this project to practice writing Pythonic programs (feel free to let me know how I did with that).
 
-The project is still a work in progress and will be (hopefully) gaining new features in the near future. The unit tests currently only test a few things about the classes, but I will be writing more tests as I get the time.
+The program is pretty straight forward and easy to use.
 
 # Examples
 
