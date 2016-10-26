@@ -1,3 +1,6 @@
+# THE 5TH ROW HAS SHUT DOWN
+I am leaving this repository up for demonstration purposes. The API service has shut down. RIP.
+
 # fifth-row-py [![Build Status](https://travis-ci.org/KinmanCovey/fifth-row-py.svg?branch=master)](https://travis-ci.org/KinmanCovey/fifth-row-py)
 A Python module made to interface with [The 5th Row](http://www.the5throw.com) sports data API
 
